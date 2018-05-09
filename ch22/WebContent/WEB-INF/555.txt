@@ -1,0 +1,59 @@
+
+public int memberDB(TextField idTF, TextField pwTF, TextField nameTF, TextField birthTF, TextField phoneTF, TextField emailTF) {
+try {
+	StringBuffer sql = new StringBuffer();
+	sql.append("insert into memberList ");
+	sql.append("values(?, ?, ?, ?, ? ,?, ?,?,?,?)"); 
+	Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    
+	pstmt = conn.prepareStatement(sql.toString());
+	pstmt.setString(1, idTF.getText().trim());
+	pstmt.setString(2, pwTF.getText().trim());
+	pstmt.setString(3, nameTF.getText().trim());
+	pstmt.setString(4, birthTF.getText().trim());
+	pstmt.setString(5, null);
+	pstmt.setString(6, null);
+	pstmt.setString(7 ,phoneTF.getText().trim());
+	pstmt.setString(8, emailTF.getText().trim());
+	pstmt.setString(9, null);
+	pstmt.setString(10, null);
+	int i = pstmt.executeUpdate();
+	System.out.println(i+"개의행추가");
+	  
+}
+	catch (SQLException e) {
+	e.printStackTrace();
+	} finally{
+	if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+	if(conn!=null) try{conn.close();}catch(SQLException ex){}
+	if(rs!=null) try{rs.close();}catch(SQLException ex){}
+	}
+	Stage stage = (Stage) btnExit.getScene().getWindow();
+	stage.close();
+	
+	
+	return 0;
+}
+
+
+  }else{Parent root = FXMLLoader.load(getClass().getResource("fail.fxml"));
+		         	Scene scene = new Scene(root);
+		         	Stage primaryStage = new Stage();
+		         	primaryStage.setScene(scene);
+		         primaryStage.show();
+		         }
+		         }catch (Exception e1) {
+		         		e1.printStackTrace();
+				     }
+
+
+
+//		Platform.runLater(new Runnable() { 
+강제로 새로운 창열게 해주기 
+
+
+
+
+}
